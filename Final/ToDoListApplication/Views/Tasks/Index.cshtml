@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ToDoListApplication.Models.Tasks>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p> AJAX Panel</p>
+
+<div>
+    <button id="ExpiredTasks">Get Expired Tasks</button>
+    <button id="DeleteExpiredTasks">Delete Expired Tasks</button>
+    <p>Expired Tasks</p>
+    <div id="results"></div>
+    
+</div>
+<br/>
+
+<div>
+    <button id="UrgentTasks">Get Urgent Tasks</button>
+    Enter Number of days <input type="text" id="NbrOfDays" />
+    <p>Urgent Tasks</p>
+    <div id="results2"></div>
+    <br />
+</div>
+<div>
+    <input type="text" id="Search" />
+    <button id="SearchByCategory">Search By Category</button>
+    <div id="results3"></div>
+    <br />
+</div>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DueDate)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DueDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+@section Scripts
+{
+    <script src="~/Scripts/App/myScript.js"></script>
+}
