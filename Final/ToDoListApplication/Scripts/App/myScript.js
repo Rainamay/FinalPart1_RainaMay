@@ -15,9 +15,9 @@
 
         $.get(URL, function (data) {
             console.log(data);
-            $("ul").remove();
+            $(".urg1").remove();
             $("#para").remove();
-            var ul = $("<ul></ul>").text("List of Expired Tasks: ");
+            var ul = $("<ul class='urg1'></ul>").text("List of Expired Tasks: ");
             $("#results").append(ul);
             $.each(data, function (i, item) {
                 var li = $("<li></li>").text(item.Id + " " + item.Title);
@@ -39,7 +39,7 @@
         var URL = "/Tasks/DeleteExpiredTasks";
 
         $.post(URL, function (data) {
-            $("ul").remove();
+            $(".urg1").remove();
             $("#para").remove();
             console.log(data);
             var alert = $("<p id='para'></p>").html("Records Deleted: " + data.count + "</br>" +
@@ -65,8 +65,8 @@
 
         $.get(URL, { "nbr": searchstring }, function (data) {
             console.log(data);
-            $("ul").remove();
-            var ul = $("<ul></ul>").text("List of Urgent Tasks: ")
+            $(".urg2").remove();
+            var ul = $("<ul class='urg2'></ul>").text("List of Urgent Tasks: ")
                 $("#results2").append(ul);
             $.each(data, function (i, item) {
                 var li = $("<li></li>").text(item.Id + " " + item.Title);
@@ -91,8 +91,8 @@
 
         $.get(URL, { "searchstring": searchstring }, function (data) {
             console.log(data);
-            $("ul").remove();
-            var ul = $("<ul></ul>").text("List of " + searchstring + " Tasks: ")
+            $(".urg3").remove();
+            var ul = $("<ul class='urg3'></ul>").text("List of " + searchstring + " Tasks: ")
             $("#results3").append(ul);
             $.each(data, function (i, item) {
                 var li = $("<li></li>").text(item.Id + " " + item.Title);
